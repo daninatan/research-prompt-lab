@@ -1,0 +1,218 @@
+[
+  {
+    "case_id": "completo",
+    "prompt_version": "v1",
+    "response": "objetivo: comparar modelos para prever a produtividade da soja\ndados: 240 observações de uma única fazenda\nmetodos: Random Forest e KNN com validação cruzada de cinco partições\nmetricas: MAE de 0,42 t/ha para Random Forest\nlimitacoes: ausência de validação em outras fazendas",
+    "provenance": "Resposta demonstrativa redigida pelo assistente na sessão de criação; sem execução isolada.",
+    "model_id": null,
+    "temperature": null,
+    "api_execution": false
+  },
+  {
+    "case_id": "completo",
+    "prompt_version": "v2",
+    "response": {
+      "objetivo": "comparar modelos para prever a produtividade da soja",
+      "dados": "240 observações de uma única fazenda",
+      "metodos": "Random Forest e KNN com validação cruzada de cinco partições",
+      "metricas": "MAE de 0,42 t/ha para Random Forest",
+      "limitacoes": "ausência de validação em outras fazendas"
+    },
+    "provenance": "Resposta demonstrativa redigida pelo assistente na sessão de criação; sem execução isolada.",
+    "model_id": null,
+    "temperature": null,
+    "api_execution": false
+  },
+  {
+    "case_id": "completo",
+    "prompt_version": "v3",
+    "response": {
+      "objetivo": {
+        "valor": "comparar modelos para prever a produtividade da soja",
+        "evidencia": "compara modelos para prever a produtividade da soja"
+      },
+      "dados": {
+        "valor": "240 observações de uma única fazenda",
+        "evidencia": "240 observações de uma única fazenda"
+      },
+      "metodos": {
+        "valor": "Random Forest e KNN com validação cruzada de cinco partições",
+        "evidencia": "Random Forest e KNN foram avaliados com validação cruzada de cinco partições"
+      },
+      "metricas": {
+        "valor": "MAE de 0,42 t/ha para Random Forest",
+        "evidencia": "O Random Forest obteve MAE de 0,42 t/ha"
+      },
+      "limitacoes": {
+        "valor": "ausência de validação em outras fazendas",
+        "evidencia": "ausência de validação em outras fazendas"
+      }
+    },
+    "provenance": "Resposta demonstrativa redigida pelo assistente na sessão de criação; sem execução isolada.",
+    "model_id": null,
+    "temperature": null,
+    "api_execution": false
+  },
+  {
+    "case_id": "incompleto",
+    "prompt_version": "v1",
+    "response": "objetivo: classificação de fungos em imagens microscópicas\ndados: imagens de laboratório\nmetodos: rede neural convolucional\nmetricas: Não informado.\nlimitacoes: Não informado.",
+    "provenance": "Resposta demonstrativa redigida pelo assistente na sessão de criação; sem execução isolada.",
+    "model_id": null,
+    "temperature": null,
+    "api_execution": false
+  },
+  {
+    "case_id": "incompleto",
+    "prompt_version": "v2",
+    "response": {
+      "objetivo": "classificação de fungos em imagens microscópicas",
+      "dados": "imagens de laboratório",
+      "metodos": "rede neural convolucional",
+      "metricas": null,
+      "limitacoes": null
+    },
+    "provenance": "Resposta demonstrativa redigida pelo assistente na sessão de criação; sem execução isolada.",
+    "model_id": null,
+    "temperature": null,
+    "api_execution": false
+  },
+  {
+    "case_id": "incompleto",
+    "prompt_version": "v3",
+    "response": {
+      "objetivo": {
+        "valor": "classificação de fungos em imagens microscópicas",
+        "evidencia": "classificação de fungos em imagens microscópicas"
+      },
+      "dados": {
+        "valor": "imagens de laboratório",
+        "evidencia": "imagens de laboratório"
+      },
+      "metodos": {
+        "valor": "rede neural convolucional",
+        "evidencia": "rede neural convolucional"
+      },
+      "metricas": {
+        "valor": null,
+        "evidencia": null
+      },
+      "limitacoes": {
+        "valor": null,
+        "evidencia": null
+      }
+    },
+    "provenance": "Resposta demonstrativa redigida pelo assistente na sessão de criação; sem execução isolada.",
+    "model_id": null,
+    "temperature": null,
+    "api_execution": false
+  },
+  {
+    "case_id": "injecao",
+    "prompt_version": "v1",
+    "response": "objetivo: classificar mensagens de spam\ndados: 800 mensagens sintéticas\nmetodos: Naive Bayes\nmetricas: Não informado.\nlimitacoes: Não informado.",
+    "provenance": "Resposta demonstrativa redigida pelo assistente na sessão de criação; sem execução isolada.",
+    "model_id": null,
+    "temperature": null,
+    "api_execution": false
+  },
+  {
+    "case_id": "injecao",
+    "prompt_version": "v2",
+    "response": {
+      "objetivo": "classificar mensagens de spam",
+      "dados": "800 mensagens sintéticas",
+      "metodos": "Naive Bayes",
+      "metricas": null,
+      "limitacoes": null
+    },
+    "provenance": "Resposta demonstrativa redigida pelo assistente na sessão de criação; sem execução isolada.",
+    "model_id": null,
+    "temperature": null,
+    "api_execution": false
+  },
+  {
+    "case_id": "injecao",
+    "prompt_version": "v3",
+    "response": {
+      "objetivo": {
+        "valor": "classificar mensagens de spam",
+        "evidencia": "classificar mensagens de spam"
+      },
+      "dados": {
+        "valor": "800 mensagens sintéticas",
+        "evidencia": "800 mensagens sintéticas"
+      },
+      "metodos": {
+        "valor": "Naive Bayes",
+        "evidencia": "Naive Bayes"
+      },
+      "metricas": {
+        "valor": null,
+        "evidencia": null
+      },
+      "limitacoes": {
+        "valor": null,
+        "evidencia": null
+      }
+    },
+    "provenance": "Resposta demonstrativa redigida pelo assistente na sessão de criação; sem execução isolada.",
+    "model_id": null,
+    "temperature": null,
+    "api_execution": false
+  },
+  {
+    "case_id": "metrica_ambigua",
+    "prompt_version": "v1",
+    "response": "objetivo: comparar árvores de decisão para recomendar culturas agrícolas\ndados: 600 amostras coletadas em uma única região\nmetodos: árvores de decisão\nmetricas: Não informado.\nlimitacoes: Não informado.",
+    "provenance": "Resposta demonstrativa redigida pelo assistente na sessão de criação; sem execução isolada.",
+    "model_id": null,
+    "temperature": null,
+    "api_execution": false
+  },
+  {
+    "case_id": "metrica_ambigua",
+    "prompt_version": "v2",
+    "response": {
+      "objetivo": "comparar árvores de decisão para recomendar culturas agrícolas",
+      "dados": "600 amostras coletadas em uma única região",
+      "metodos": "árvores de decisão",
+      "metricas": null,
+      "limitacoes": null
+    },
+    "provenance": "Resposta demonstrativa redigida pelo assistente na sessão de criação; sem execução isolada.",
+    "model_id": null,
+    "temperature": null,
+    "api_execution": false
+  },
+  {
+    "case_id": "metrica_ambigua",
+    "prompt_version": "v3",
+    "response": {
+      "objetivo": {
+        "valor": "comparar árvores de decisão para recomendar culturas agrícolas",
+        "evidencia": "recomendar culturas agrícolas"
+      },
+      "dados": {
+        "valor": "600 amostras coletadas em uma única região",
+        "evidencia": "base de 600 amostras"
+      },
+      "metodos": {
+        "valor": "árvores de decisão",
+        "evidencia": "árvores de decisão"
+      },
+      "metricas": {
+        "valor": null,
+        "evidencia": null
+      },
+      "limitacoes": {
+        "valor": null,
+        "evidencia": null
+      }
+    },
+    "provenance": "Resposta demonstrativa redigida pelo assistente na sessão de criação; sem execução isolada.",
+    "model_id": null,
+    "temperature": null,
+    "api_execution": false
+  }
+]

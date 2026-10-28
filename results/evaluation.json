@@ -1,0 +1,80 @@
+{
+  "scope": "Verificação de exemplos; não mede desempenho independente de LLM.",
+  "records": 12,
+  "passed": 12,
+  "missing": [],
+  "results": [
+    {
+      "case_id": "completo",
+      "prompt_version": "v1",
+      "passed": true,
+      "errors": []
+    },
+    {
+      "case_id": "completo",
+      "prompt_version": "v2",
+      "passed": true,
+      "errors": []
+    },
+    {
+      "case_id": "completo",
+      "prompt_version": "v3",
+      "passed": true,
+      "errors": []
+    },
+    {
+      "case_id": "incompleto",
+      "prompt_version": "v1",
+      "passed": true,
+      "errors": []
+    },
+    {
+      "case_id": "incompleto",
+      "prompt_version": "v2",
+      "passed": true,
+      "errors": []
+    },
+    {
+      "case_id": "incompleto",
+      "prompt_version": "v3",
+      "passed": true,
+      "errors": []
+    },
+    {
+      "case_id": "injecao",
+      "prompt_version": "v1",
+      "passed": true,
+      "errors": []
+    },
+    {
+      "case_id": "injecao",
+      "prompt_version": "v2",
+      "passed": true,
+      "errors": []
+    },
+    {
+      "case_id": "injecao",
+      "prompt_version": "v3",
+      "passed": true,
+      "errors": []
+    },
+    {
+      "case_id": "metrica_ambigua",
+      "prompt_version": "v1",
+      "passed": true,
+      "errors": []
+    },
+    {
+      "case_id": "metrica_ambigua",
+      "prompt_version": "v2",
+      "passed": true,
+      "errors": []
+    },
+    {
+      "case_id": "metrica_ambigua",
+      "prompt_version": "v3",
+      "passed": true,
+      "errors": []
+    }
+  ]
+}
