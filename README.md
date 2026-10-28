@@ -1,68 +1,100 @@
 # Research Prompt Lab
 
-Laboratório de engenharia de prompts para extrair fichas de resumos científicos em português.
+Laboratório de prompts para extrair informações de resumos científicos em português e organizar os resultados em fichas estruturadas.
 
-Projeto de portfólio criado por daninatan com assistência de IA. Relaciona o contexto de pesquisa em Machine Learning à experimentação com modelos de linguagem. Todos os textos de teste são **sintéticos**, sem resultados provenientes da IC ou dados pessoais.
+O projeto explora três estratégias de extração, com um avaliador local em Python para verificar formato, informações ausentes e trechos de evidência.
 
-## O problema
+## Funcionalidades
 
-Transformar um resumo em uma ficha com objetivo, dados, métodos, métricas e limitações, preservando a diferença entre fatos explícitos e informações ausentes. O foco é rastreabilidade, especialmente quando o texto contém números ambíguos ou instruções maliciosas.
+- Extração de objetivo, dados, métodos, métricas e limitações.
+- Três versões de prompt: ficha textual, JSON simples e JSON com evidências.
+- Casos sintéticos com informações completas, campos ausentes, números ambíguos e tentativas de prompt injection.
+- Verificação automática das respostas com testes e integração contínua no GitHub Actions.
 
-## Três estratégias
+## Estratégias de prompt
 
-| Versão | Estratégia | Formato |
+| Versão | Abordagem | Saída |
 |---|---|---|
-| v1 | Pedido direto, restrito ao texto | Ficha textual |
-| v2 | Esquema explícito e regra de ausência | JSON com strings/null |
-| v3 | Extração com evidências e regras contra inferências | JSON com valor e trecho literal |
+| v1 | Extração direta a partir do texto | Ficha textual |
+| v2 | Esquema explícito e tratamento de campos ausentes | JSON com strings ou null |
+| v3 | Extração acompanhada de trechos literais da fonte | JSON com valor e evidência |
 
-Os prompts completos estão em [prompts](prompts). Há quatro casos em [data/cases.json](data/cases.json): resumo completo, informações ausentes, tentativa de prompt injection e número sem métrica identificada.
+Os prompts estão disponíveis em [prompts/](prompts). Os quatro casos de exemplo e seus valores de referência estão em [data/cases.json](data/cases.json).
 
-## O que foi realmente feito
+## Requisitos
 
-Foram criados três prompts e **12 respostas demonstrativas**, redigidas pelo assistente na mesma sessão de criação (três formatos para quatro casos). São exemplos trabalhados de comportamento esperado. **Não são 12 chamadas independentes ao modelo**, nem um benchmark controlado. O assistente teve acesso aos gabaritos; os exemplos não medem a capacidade de generalização de um LLM. O identificador exato do modelo e a temperatura não estão disponíveis, por isso são registrados como null. O histórico de commits representa etapas de implementação, não uma cronologia de experimentos científicos.
+Python 3.10 ou superior. Utiliza apenas a biblioteca padrão, sem dependências externas.
 
-O avaliador executável verifica contratos de saída, abstenção nos campos ausentes, correspondência ao gabarito e presença literal das evidências. A correspondência textual ao gabarito é restritiva: uma paráfrase correta pode falhar. Evidência literal por si só não prova suporte semântico. A revisão humana continua necessária.
+## Uso
 
-## Executar (Python 3.10+)
+Na raiz do projeto, monte um prompt para um dos casos disponíveis:
 
 ```bash
 python src/lab.py prompt --version v3 --case injecao
+```
+
+O comando imprime o prompt com o texto de entrada para uso em um modelo de linguagem. A geração das respostas é manual; o programa não faz chamadas a APIs.
+
+Avalie os exemplos incluídos:
+
+```bash
 python src/lab.py evaluate
+```
+
+A avaliação gera `results/evaluation.json` e `results/report.md`.
+
+Execute os testes:
+
+```bash
 python -m unittest discover -s tests -v
 ```
 
-Sem API, chave, dependência externa ou serviço pago. O comando `prompt` monta o pedido para copiar em um chat; ele **não chama um modelo**. `evaluate` reavalia os exemplos registrados e atualiza `results/evaluation.json` e `results/report.md`.
+### Avaliar novas respostas
 
-Para avaliar respostas próprias, copie `results/session_examples.json`, substitua as respostas e atualize a proveniência com ferramenta/modelo, data, parâmetros e se houve acesso ao gabarito. Depois execute:
+Use `results/session_examples.json` como referência de formato. Crie um arquivo com suas respostas e registre a origem, o modelo, a data e os parâmetros disponíveis. Informe também se o modelo teve acesso ao gabarito.
 
 ```bash
 python src/lab.py evaluate --runs meus_resultados.json --output results/minha_avaliacao
 ```
 
-## Resultados e interpretação
+Os identificadores de casos devem corresponder aos definidos em `data/cases.json`.
 
-Veja [o relatório reproduzível](results/report.md) e [a metodologia](docs/methodology.md). v3 permite checar trechos de origem; v2 facilita integração por JSON; v1 favorece leitura direta. Esses são atributos dos formatos, **não evidência de superioridade de um modelo**. Não há medição de economia de tempo, usuários em produção ou robustez geral contra ataques.
+## Avaliação
 
-## Próxima rodada independente
+O avaliador verifica:
 
-1. Escrever novos resumos e separar os gabaritos das entradas do modelo.
-2. Executar cada prompt em conversas novas, sem mostrar outras respostas nem gabaritos.
-3. Registrar modelo, data, configurações disponíveis e respostas sem corrigir.
-4. Fazer revisão humana de correção, omissão e alegações sem suporte, além das verificações automáticas.
-5. Comparar múltiplas repetições e contabilizar também custo e latência, se disponíveis.
+- Estrutura e tipos dos campos de cada versão.
+- Correspondência dos valores com o gabarito.
+- Uso de null nos campos sem informação.
+- Presença de trechos literais como evidência na versão v3.
+- Registros duplicados, casos desconhecidos e combinações ausentes.
+
+O conjunto incluído contém 12 respostas demonstrativas elaboradas com assistência de IA e acesso aos gabaritos. Essas respostas servem para exercitar o avaliador; não representam execuções independentes dos prompts nem um benchmark de desempenho de LLMs.
+
+A comparação exata com o gabarito pode rejeitar paráfrases corretas. A presença literal de uma evidência também não garante que ela sustente semanticamente a resposta. A análise de qualidade exige revisão humana.
+
+Consulte o [relatório dos exemplos](results/report.md) e a [metodologia](docs/methodology.md) para detalhes sobre os dados e os critérios de avaliação.
 
 ## Estrutura
 
-- `prompts/`: versões completas para copiar e adaptar.
-- `data/`: entradas sintéticas, valores esperados e trechos de referência.
-- `results/`: exemplos da sessão e avaliações reproduzíveis.
-- `src/lab.py`: montagem dos prompts e validação das respostas.
-- `tests/`: casos negativos para verificar o avaliador.
-- `docs/`: metodologia e apresentação do projeto.
+```text
+research-prompt-lab/
+├── prompts/            # Três versões dos prompts
+├── data/               # Textos sintéticos e gabaritos
+├── src/lab.py          # Montagem de prompts e avaliação
+├── tests/              # Testes do avaliador
+├── results/            # Exemplos e relatórios
+├── docs/               # Metodologia
+└── .github/workflows/  # Verificações automatizadas
+```
 
-## Como apresentar
+## Próximos passos
 
-“Desenvolvi, com assistência de IA, um laboratório de prompts para extração de informações de resumos científicos, com três estratégias, casos sintéticos e validação automática de formato e evidências. O repositório inclui exemplos demonstrativos e documenta as limitações da avaliação.”
+- Ampliar os casos com novos temas e formatos de resumo.
+- Executar os prompts em sessões independentes, sem acesso aos gabaritos.
+- Registrar modelo, configurações, custo e latência quando disponíveis.
+- Complementar a avaliação automática com revisão semântica das respostas.
 
-Este projeto demonstra prompts estruturados e uma exploração assistida por LLM. Não deve ser apresentado como solução em produção ou benchmark independente. Licença MIT.
+## Licença
+
+[MIT](LICENSE).
