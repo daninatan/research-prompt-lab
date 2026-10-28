@@ -1,0 +1,4 @@
+Leia o texto e escreva uma ficha curta com objetivo, dados, métodos, métricas e limitações. Use somente o que está no texto; sinalize informações ausentes.
+
+Texto:
+{{texto}}
